@@ -200,8 +200,8 @@ else:
    # elif selected_model == "SVM":
         # Exécute la prédiction avec le modèle SVM
         results, decision_scores  = predict_solvency_svm(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
-                                  age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
-                                     GENRE, Nombre_de_Credits
+                                       age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
+                                       GENRE, Nombre_de_Credits
                                   )
 
         st.write("Résultat de la prédiction: ", results)
