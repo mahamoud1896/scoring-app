@@ -3,20 +3,20 @@ import streamlit as st
 import joblib  # Pour charger le modèle
 from sklearn.metrics import precision_score
 #from annotated_text import annotated_text
-import gzip
-import pickle
+#import gzip
+#import pickle
 
-def load_model():
-    with gzip.open("final_rf16_model.zip", "rb") as f:
-        pkl_data = f.read()
-    return pickle.loads(pkl_data)
+#def load_model():
+#    with gzip.open("final_rf16_model.zip", "rb") as f:
+#        pkl_data = f.read()
+#    return pickle.loads(pkl_data)
 
 #model = load_model()
 
 
 # Chargement du modèle random forestet svm formé
 
-model_rf = load_model()
+#model_rf = load_model()
 #joblib.load('final_rf16_model.pkl')
 
 model_svm = joblib.load('final_svm16_model.pkl')
@@ -65,13 +65,13 @@ def predict_solvency_rf(solde_compte_courant, duree_credit, montant_impaye, mont
     })
 
     # la prédiction avec le modèle Random forest
-    probabilities = model_rf.predict_proba(data)[:, 1]  # Probabilité d'être "Client SOLVABLE"
+    #probabilities = model_rf.predict_proba(data)[:, 1]  # Probabilité d'être "Client SOLVABLE"
 
     # Renvoyer le résultat en fonction du seuil
-    if probabilities >= seuil:
-        return "Client SOLVABLE", probabilities
+    #if probabilities >= seuil:
+    #    return "Client SOLVABLE", probabilities
     #else:
-        return "Client NON SOLVABLE", probabilities
+     #   return "Client NON SOLVABLE", probabilities
 
     
 
@@ -129,6 +129,8 @@ def predict_solvency_svm(solde_compte_courant, duree_credit, montant_impaye, mon
     return predicted_class, decision_scores
 
 #==============================================================================================================
+# Bouton pour télécharger l'image
+uploaded_file = st.file_uploader("Télécharger le document")
 
 # Liste des modèles disponibles
 model_options = ["Random Forest", "SVM"]
@@ -184,18 +186,18 @@ else:
 
 
 # Bouton pour lancer la prédiction
-if st.button("Prédire"):
-    if selected_model == "Random Forest":
+#if st.button("Prédire"):
+ #   if selected_model == "Random Forest":
         # Exécute la prédiction avec le modèle random forest
-        result, confidence = predict_solvency_rf(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
-                                  age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
-                                     GENRE, Nombre_de_Credits, seuil=0.5
-                                  )
-        st.write("Résultat de la prédiction:", result)
-        st.write("Score de confiance (Probabilité d'être solvable):", confidence)
+  #      result, confidence = predict_solvency_rf(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
+   #                               age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
+    #                                 GENRE, Nombre_de_Credits, seuil=0.5
+     #                             )
+      #  st.write("Résultat de la prédiction:", result)
+       # st.write("Score de confiance (Probabilité d'être solvable):", confidence)
 
 
-    elif selected_model == "SVM":
+   # elif selected_model == "SVM":
         # Exécute la prédiction avec le modèle SVM
         results, decision_scores  = predict_solvency_svm(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
                                   age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
