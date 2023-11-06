@@ -4,5 +4,4 @@ numpy
 pandas
 joblib
 sklearn
-pickle
 gzip
