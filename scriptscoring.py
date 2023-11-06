@@ -14,7 +14,6 @@ def load_model():
 #model = load_model()
 
 
-
 # Chargement du modèle random forestet svm formé
 
 model_rf = load_model()
