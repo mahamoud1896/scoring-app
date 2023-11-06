@@ -186,7 +186,7 @@ else:
 
 
 # Bouton pour lancer la prédiction
-#if st.button("Prédire"):
+if st.button("Prédire"):
  #   if selected_model == "Random Forest":
         # Exécute la prédiction avec le modèle random forest
   #      result, confidence = predict_solvency_rf(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
@@ -199,12 +199,10 @@ else:
 
    # elif selected_model == "SVM":
         # Exécute la prédiction avec le modèle SVM
-        results, decision_scores  = predict_solvency_svm(solde_compte_courant, duree_credit, montant_impaye, montant_credit,
-                                       age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe,
-                                       GENRE, Nombre_de_Credits)
+    results, decision_scores  = predict_solvency_svm(solde_compte_courant, duree_credit, montant_impaye, montant_credit, age, solde_compte_epargne, profile, Retard_P, Presence_Remboursement_Anticipe, GENRE, Nombre_de_Credits)
 
-        st.write("Résultat de la prédiction: ", results)
-        st.write("Score de décision: ", decision_scores)
+    st.write("Résultat de la prédiction: ", results)
+    st.write("Score de décision: ", decision_scores)
 
 
 
