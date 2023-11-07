@@ -7,7 +7,7 @@ import gzip
 import pickle
 
 def load_model():
-    with gzip.open("final_rf16_model.zip", "rb") as f:
+    with gzip.open("random_forest16.zip", "rb") as f:
         pkl_data = f.read()
     return pickle.loads(pkl_data)
 
